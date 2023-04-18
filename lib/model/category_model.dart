@@ -19,37 +19,25 @@ class Category {
         image: json['image'],
       );
 
-      static Stream<List<Category>> getCategories() {
+  static Stream<List<Category>> getCategories() {
     return FirebaseFirestore.instance
         .collection('myApp')
         .doc('Admin')
         .collection('Category')
         .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map(
-              (doc) => Category.fromJson(doc.data()),
-            )
-            .toList());
+        .map(
+          (snapshot) => snapshot.docs
+              .map(
+                (doc) => Category.fromJson(doc.data()),
+              )
+              .toList(),
+        );
   }
 
-  // static Stream<List<Category>> getAllCategories() {
-  //   return FirebaseFirestore.instance
-  //       .collection('myApp')
-  //       .doc('Admin')
-  //       .collection('Category')
-  //       .snapshots()
-  //       .map((
-  //         (snapshot) => snapshot.docs.map(
-  //           (doc) => Category.fromJson(
-  //             doc.data(),
-  //           ),
-  //         )
-  //       )
-  //       .toList());
-  // }
-
-  static Future<void> addCategory(
-      {required String category, required String image}) async {
+  static Future<void> addCategory({
+    required String category,
+    required String image,
+  }) async {
     final docCategory = FirebaseFirestore.instance
         .collection('myApp')
         .doc('Admin')

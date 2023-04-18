@@ -116,7 +116,7 @@ class AddCategory extends StatelessWidget {
     final file = File(imageFile!.path);
     final ref = FirebaseStorage.instance.ref().child(path);
     uploadTask = ref.putFile(file);
-    final snapshot = await uploadTask!.whenComplete(() {});
+    final snapshot = await uploadTask!.whenComplete(() {}); 
     final urlDownload = await snapshot.ref.getDownloadURL();
     return urlDownload;
   }
@@ -130,6 +130,8 @@ class AddCategory extends StatelessWidget {
     log('Image Uploaded succeffuly $downloadImageurl');
 
     await Category.addCategory(
-        category: categoryController.text.trim(), image: downloadImageurl);
+      category: categoryController.text.trim(),
+      image: downloadImageurl,
+    );
   }
 }

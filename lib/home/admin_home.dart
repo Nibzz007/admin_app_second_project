@@ -1,7 +1,7 @@
 import 'package:admin_app_second_project/category/all_categories_screen.dart';
 import 'package:admin_app_second_project/Products/all_products_screen.dart';
 import 'package:admin_app_second_project/category/add_category_screen.dart';
-import 'package:admin_app_second_project/Orders/orders_screen.dart';
+import 'package:admin_app_second_project/Orders/Order screen/orders_screen.dart';
 import 'package:admin_app_second_project/Products/add_products_screen.dart';
 import 'package:admin_app_second_project/Settings/settings_screen.dart';
 import 'package:admin_app_second_project/Utils/size.dart';

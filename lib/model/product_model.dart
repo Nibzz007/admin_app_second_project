@@ -70,4 +70,13 @@ class Product {
     final json = product.toJson();
     await docProduct.set(json);
   }
+
+  static Future<void> deleteProduct({required String productName}) async {
+    FirebaseFirestore.instance
+        .collection('myApp')
+        .doc('Admin')
+        .collection('Products')
+        .doc(productName)
+        .delete();
+  }
 }

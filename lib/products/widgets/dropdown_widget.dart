@@ -15,7 +15,7 @@ class _CategoryDropDownWidgetState extends State<CategoryDropDownWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(7),
+      padding: const EdgeInsets.all(7),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -23,21 +23,21 @@ class _CategoryDropDownWidgetState extends State<CategoryDropDownWidget> {
         future: Category.getCategories().first,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text('Some error occured '),
             );
           } else if (snapshot.hasData) {
             final categories = snapshot.data!;
             return DropdownButton<String>(
               value: selectedItem,
-              underline: SizedBox(),
+              underline: const SizedBox(),
               borderRadius: BorderRadius.circular(15),
               isExpanded: true,
-              hint: Text('Select item'),
+              hint: const Text('Select item'),
               items: categories.map((value) {
                 return DropdownMenuItem<String>(
-                  child: Text(value.category),
                   value: value.category,
+                  child: Text(value.category),
                 );
               }).toList(),
               onChanged: ((String? value) {
@@ -48,7 +48,7 @@ class _CategoryDropDownWidgetState extends State<CategoryDropDownWidget> {
               }),
             );
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),

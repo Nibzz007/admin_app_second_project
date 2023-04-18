@@ -129,6 +129,7 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
                         CustomTextFieldWidget(
                           controller: descriptionController,
                           hintText: 'Description',
+                          maxLines: 6,
                           validator: (description) {
                             return description != null &&
                                     description.length < 10
