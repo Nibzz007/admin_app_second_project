@@ -11,8 +11,10 @@ class AllCategoriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'All Categories',
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Padding(
@@ -38,7 +40,9 @@ class AllCategoriesScreen extends StatelessWidget {
                 );
               }
             } else {
-              return const CircularProgressIndicator();
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
         ),

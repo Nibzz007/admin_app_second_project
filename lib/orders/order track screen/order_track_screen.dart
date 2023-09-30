@@ -36,78 +36,84 @@ class OrderTrackScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {
-              Orders.cancelOrder(order: order);
+            onPressed: () async {
+             await Orders.cancelOrder(order: order);
               showSnackBar(context, 'Order is cancelled');
+              Navigator.pop(context);
             },
             icon: const Icon(Icons.cancel_outlined),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    height: screenHeight * 0.135,
-                    width: screenHeight * 0.135,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          order.image,
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  kWidth10,
-                  Expanded(
-                    child: SizedBox(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(width: 0.3)
+                ),
+                child: Row(
+                  children: [
+                    Container(
                       height: screenHeight * 0.135,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            order.productName,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      width: screenHeight * 0.135,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            order.image,
                           ),
-                          Text(order.orderId),
-                          Text('Quantity = ${order.cartCount}'),
-                          Text(
-                            order.price.toString(),
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(width: 0.2)
                       ),
                     ),
-                  ),
-                ],
+                    kWidth10,
+                    Expanded(
+                      child: SizedBox(
+                        height: screenHeight * 0.135,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              order.productName,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(order.orderId),
+                            Text('Quantity = ${order.cartCount}'),
+                            Text(
+                              order.price.toString(),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            kWidth20,
-            AnotherStepper(
-              stepperList: stepperList,
-              stepperDirection: Axis.vertical,
-              verticalGap: 50,
-              activeIndex: order.deliveryType,
-              activeBarColor: Colors.white,
-            ),
-          ],
+              kWidth20,
+              AnotherStepper(
+                stepperList: stepperList,
+                stepperDirection: Axis.vertical,
+                verticalGap: 50,
+                activeIndex: order.deliveryType,
+                activeBarColor: Colors.blue,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

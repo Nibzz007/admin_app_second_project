@@ -29,7 +29,7 @@ class Product {
       productName: json['product'],
       images: json['images'],
       description: json['description'],
-      price: json['price'],
+      price: json['price'].toString(),
       category: json['category'],
     );
   }
@@ -42,7 +42,7 @@ class Product {
         .snapshots()
         .map(
           (snapshots) => snapshots.docs
-              .map((docs) => Product.fromJson(docs.data()))
+              .map((doc) => Product.fromJson(doc.data()))
               .toList(),
         );
   }

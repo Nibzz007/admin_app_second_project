@@ -5,12 +5,10 @@ class ListTileWidget extends StatelessWidget {
     Key? key,
     required this.title,
     required this.onTap,
-    required this.shape,
   }) : super(key: key);
 
   final Text title;
   final Function() onTap;
-  final ShapeBorder shape;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,10 @@ class ListTileWidget extends StatelessWidget {
       tileColor: Colors.grey.shade400,
       title: title,
       onTap: onTap,
-      shape: shape,
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(width: 0.5),
+        borderRadius: BorderRadius.circular(20),
+      ),
     );
   }
 }

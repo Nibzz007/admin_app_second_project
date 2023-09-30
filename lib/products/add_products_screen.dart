@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:admin_app_second_project/main.dart';
 import 'package:admin_app_second_project/model/product_model.dart';
 import 'package:admin_app_second_project/products/widgets/dropdown_widget.dart';
 import 'package:admin_app_second_project/utils/colors.dart';
@@ -7,7 +8,6 @@ import 'package:admin_app_second_project/utils/show_snack_bar_function.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-
 import 'widgets/add_product_heading.dart';
 import 'widgets/custom_text_field_widget.dart';
 
@@ -36,8 +36,10 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Add Products',
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Padding(
@@ -148,14 +150,26 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
                         kHeight20,
                         ElevatedButton.icon(
                           onPressed: () async {
+                            showDialog(
+                              context: context,
+                              builder: ((context) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }),
+                            );
                             if (!formKey.currentState!.validate()) {
                               return;
                             }
                             await addProduct();
+                            // ignore: use_build_context_synchronously
                             showSnackBar(
                               context,
                               'Product added succesfully',
                             );
+
+                            navigatorKey.currentState!
+                                .popUntil((route) => route.isFirst);
                           },
                           icon: const Icon(Icons.add),
                           label: const Text(

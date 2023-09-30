@@ -11,9 +11,16 @@ class OrdersScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Order screen'),
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: const Text(
+            'Order screen',
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
           bottom: const TabBar(
+            indicatorColor: Colors.white,
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white,
             tabs: [
               Tab(
                 text: 'Active',

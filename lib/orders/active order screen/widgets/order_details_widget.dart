@@ -15,24 +15,55 @@ class OrderDetailsWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Order no : ${order.orderId}'),
+            Text(
+              'Order no : ${order.orderId}',
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const Divider(
+              thickness: 1,
+            ),
             kHeight10,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(order.productName),
-                Text('${order.price}'),
+                Text('Name : ${order.productName}'
+                  ,
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+                Text(
+                  'Price : ${order.price}',
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
               ],
             ),
             kHeight10,
-            Text('Quantity : ${order.cartCount}'),
+            const Divider(
+              thickness: 1,
+            ),
             kHeight10,
-            const Text('User details'),
-            kHeight5,
+            Text(
+              'Quantity : ${order.cartCount}',
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            kHeight10,
+            const Divider(
+              thickness: 1,
+            ),
+            const Text(
+              'User details',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            kHeight10,
             Text(order.email),
             kHeight10,
-            const Text('Shipping address'),
-            kHeight5,
+            const Divider(
+              thickness: 1,
+            ),
+            const Text(
+              'Shipping address',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            kHeight10,
             Text(order.address),
           ],
         ),

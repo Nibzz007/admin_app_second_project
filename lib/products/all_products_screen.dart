@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:admin_app_second_project/model/product_model.dart';
 import 'package:admin_app_second_project/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +11,19 @@ class AllProductsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'All Products',
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: StreamBuilder<List<Product>>(
         stream: Product.getProducts(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-              child: Text('Something went wrong'),
+            log(snapshot.toString());
+            return Center(
+              child: Text('Something went wrong ${snapshot.toString()}'),
             );
           } else if (snapshot.hasData) {
             final products = snapshot.data!;
@@ -33,7 +37,9 @@ class AllProductsScreen extends StatelessWidget {
               );
             }
           } else {
-            return const CircularProgressIndicator();
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),
@@ -55,10 +61,9 @@ class AllProductsScreen extends StatelessWidget {
           leading: Container(
             height: 50,
             width: 50,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            child: Image.network(product.images[0]),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(image: NetworkImage(product.images[0]))),
           ),
           title: Text(product.productName),
           subtitle: Text(product.price),

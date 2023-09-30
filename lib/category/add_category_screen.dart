@@ -20,8 +20,10 @@ class AddCategory extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Add Categories',
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Form(
@@ -77,9 +79,11 @@ class AddCategory extends StatelessWidget {
                     return null;
                   }
                 },
-                decoration: const InputDecoration(
-                  label: Text('Category name'),
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  label: const Text('Category name'),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
               ),
             ),
@@ -116,7 +120,7 @@ class AddCategory extends StatelessWidget {
     final file = File(imageFile!.path);
     final ref = FirebaseStorage.instance.ref().child(path);
     uploadTask = ref.putFile(file);
-    final snapshot = await uploadTask!.whenComplete(() {}); 
+    final snapshot = await uploadTask!.whenComplete(() {});
     final urlDownload = await snapshot.ref.getDownloadURL();
     return urlDownload;
   }

@@ -3,7 +3,6 @@ import 'package:admin_app_second_project/Products/all_products_screen.dart';
 import 'package:admin_app_second_project/category/add_category_screen.dart';
 import 'package:admin_app_second_project/Orders/Order screen/orders_screen.dart';
 import 'package:admin_app_second_project/Products/add_products_screen.dart';
-import 'package:admin_app_second_project/Settings/settings_screen.dart';
 import 'package:admin_app_second_project/Utils/size.dart';
 import 'package:flutter/material.dart';
 import 'wIdgets/list_tile_widget.dart';
@@ -16,10 +15,17 @@ class AdminHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Admin Panel'),
+        title: const Text(
+          'Admin Panel',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             ListTileWidget(
@@ -33,9 +39,6 @@ class AdminHome extends StatelessWidget {
                   ),
                 );
               },
-              shape: Border.all(
-                width: 0.2,
-              ),
             ),
             kHeight10,
             ListTileWidget(
@@ -49,9 +52,6 @@ class AdminHome extends StatelessWidget {
                   ),
                 );
               },
-              shape: Border.all(
-                width: 0.2,
-              ),
             ),
             kHeight10,
             ListTileWidget(
@@ -65,9 +65,6 @@ class AdminHome extends StatelessWidget {
                   ),
                 );
               },
-              shape: Border.all(
-                width: 0.2,
-              ),
             ),
             kHeight10,
             ListTileWidget(
@@ -81,9 +78,6 @@ class AdminHome extends StatelessWidget {
                   ),
                 );
               },
-              shape: Border.all(
-                width: 0.2,
-              ),
             ),
             kHeight10,
             ListTileWidget(
@@ -97,26 +91,23 @@ class AdminHome extends StatelessWidget {
                   ),
                 );
               },
-              shape: Border.all(
-                width: 0.2,
-              ),
             ),
             kHeight10,
-            ListTileWidget(
-              title: const Text(
-                'Settings',
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsScreen(),
-                  ),
-                );
-              },
-              shape: Border.all(
-                width: 0.2,
-              ),
-            ),
+            // ListTileWidget(
+            //   title: const Text(
+            //     'Settings',
+            //   ),
+            //   onTap: () {
+            //     Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //         builder: (context) => const SettingsScreen(),
+            //       ),
+            //     );
+            //   },
+            //   shape: Border.all(
+            //     width: 0.2,
+            //   ),
+            // ),
           ],
         ),
       ),
